@@ -5,8 +5,8 @@ import (
 	"io"
 	"encoding/json"
 	"log"
-	"net/http"
 	"github.com/spf13/cobra"
+	"htb/utils"
 )
 
 var ipCmd = &cobra.Command{
@@ -16,19 +16,7 @@ var ipCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := "492"
 		url := "https://www.hackthebox.com/api/v4/machine/profile/" + machine_id
-		jwt_token := "REDACTED"
-		req, err := http.NewRequest("GET", url, nil)
-		if err != nil {
-			fmt.Println(err)
-		}
-		req.Header.Set("User-Agent", "HTB-Tool")
-		req.Header.Set("Authorization", "Bearer " + jwt_token)
-		client := &http.Client{}
-		resp, err := client.Do(req)
-		if err != nil {
-			fmt.Println(err)
-		}
-		defer resp.Body.Close()
+		resp := utils.HtbGet(url)
 		json_body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			log.Fatalln(err)

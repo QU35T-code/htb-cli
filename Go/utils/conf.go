@@ -5,8 +5,8 @@ import (
 	"github.com/spf13/viper"
 )
 
-func GetHtbToken() string {
-	viper.SetConfigName("config")
+func GetConfigValue(key string) string {
+	viper.SetConfigName("config.yml")
 	viper.AddConfigPath(".")
 	viper.AutomaticEnv()
 	viper.SetConfigType("yml")
@@ -18,5 +18,16 @@ func GetHtbToken() string {
 	if err != nil {
 		fmt.Printf("Unable to decode into struct, %v", err)
 	}
-	return config["token"].(string)
+	return config[key].(string)
+}
+
+func SetConfigValue(key string, value string) {
+	viper.SetConfigName("config")
+	viper.AddConfigPath(".")
+	viper.SetConfigType("yml")
+	if err := viper.ReadInConfig(); err != nil {
+		fmt.Printf("Error reading config file, %s", err)
+	}
+	viper.Set(key, value)
+	viper.WriteConfig()
 }

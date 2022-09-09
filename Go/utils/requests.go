@@ -9,7 +9,7 @@ import (
 
 func HtbGet(url string) *http.Response {
 	req, err := http.NewRequest(http.MethodGet, url, nil)
-	jwt_token := GetHtbToken()
+	jwt_token := GetConfigValue("token")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -25,7 +25,7 @@ func HtbGet(url string) *http.Response {
 
 func HtbPost(url string, jsonData []byte) *http.Response {
 	req, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonData))
-	jwt_token := GetHtbToken()
+	jwt_token := GetConfigValue("token")
 	if err != nil {
 		fmt.Println(err)
 	}

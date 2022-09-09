@@ -16,7 +16,7 @@ var flagCmd = &cobra.Command{
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		url := "https://www.hackthebox.com/api/v4/machine/own"
-		machine_id := "492" // Temp
+		machine_id := utils.GetConfigValue("machineid")
 		flag := args[0]
 		difficulty, err := strconv.Atoi(args[1])
 		if err != nil {

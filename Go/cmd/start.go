@@ -14,7 +14,7 @@ var startCmd = &cobra.Command{
 	Short: "Start a machine",
 	Long: `Starts a Hackthebox machine specified in argument`,
 	Run: func(cmd *cobra.Command, args []string) {
-		machine_id := "492" // Temp
+		machine_id := utils.GetConfigValue("machineid")
 		url := "https://www.hackthebox.com/api/v4/machine/play/" + machine_id
 		var jsonData = []byte("{}")
 		resp := utils.HtbPost(url, jsonData)

@@ -17,10 +17,10 @@ func SearchMachineIDByName(machine_name string) int {
 	}
 	var result map[string]interface{}
 	json.Unmarshal([]byte(json_body), &result)
-	machines := result["machines"]
-	fmt.Println(machines)
+	// machines := result["machines"]
+	// fmt.Println(machines)
 	// var result2 map[string]interface{}
 	// json.Unmarshal(map[string]interface{}(machines), &result2)
     // fmt.Println(result2)
-	return 1
+	return 432
 }

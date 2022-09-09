@@ -15,7 +15,7 @@ var ipCmd = &cobra.Command{
 	Long: `Retrieves the IP address of the machine deployed on Hackthebox and displays it`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.SearchMachineIDByName(args[0])
-		machine_id := "492" // Temp
+		machine_id := utils.GetConfigValue("machineid")
 		url := "https://www.hackthebox.com/api/v4/machine/profile/" + machine_id
 		resp := utils.HtbGet(url)
 		json_body, err := io.ReadAll(resp.Body)

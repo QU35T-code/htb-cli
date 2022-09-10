@@ -7,6 +7,7 @@ import (
 	"log"
 	"github.com/spf13/cobra"
 	"htb/utils"
+	"os"
 )
 
 var ipCmd = &cobra.Command{
@@ -14,7 +15,7 @@ var ipCmd = &cobra.Command{
 	Short: "Get Target IP Address",
 	Long: `Retrieves the IP address of the machine deployed on Hackthebox and displays it`,
 	Run: func(cmd *cobra.Command, args []string) {
-		machine_id := utils.SearchMachineIDByName(args[0])
+		machine_id := utils.GetConfigValue("machineid")
 		url := "https://www.hackthebox.com/api/v4/machine/profile/" + machine_id
 		resp := utils.HtbGet(url)
 		json_body, err := io.ReadAll(resp.Body)
@@ -25,8 +26,12 @@ var ipCmd = &cobra.Command{
 		json.Unmarshal([]byte(json_body), &result)
 		info := result["info"]
 		infomap := info.(map[string]interface{})
-    	fmt.Println(infomap["name"])
-    	fmt.Println(infomap["ip"])
+    	if infomap["ip"] == nil {
+			fmt.Println("Machine is down")
+			os.Exit(1)
+		}
+		fmt.Println(infomap["name"])
+		fmt.Println(infomap["ip"])
 	},
 }
 

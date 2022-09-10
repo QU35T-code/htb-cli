@@ -9,7 +9,7 @@ import (
 
 var statusCmd = &cobra.Command{
 	Use:   "status",
-	Short: "A brief description of your command",
+	Short: "Displays the active machine",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {		
 		url := "https://www.hackthebox.com/api/v4/machine/active"

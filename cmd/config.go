@@ -7,7 +7,7 @@ import (
 
 var configCmd = &cobra.Command{
 	Use:   "config",
-	Short: "A brief description of your command",
+	Short: "Save the machine chosen as an argument",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.SearchMachineIDByName(args[0])

@@ -8,7 +8,7 @@ import (
 
 var infoCmd = &cobra.Command{
 	Use:   "info",
-	Short: "A brief description of your command",
+	Short: "Displays machine information",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetConfigValue("machineid")

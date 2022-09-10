@@ -9,7 +9,7 @@ import (
 
 var bloodCmd = &cobra.Command{
 	Use:   "blood",
-	Short: "A brief description of your command",
+	Short: "Displays users who have blood the machine",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetConfigValue("machineid")

@@ -9,7 +9,7 @@ import (
 
 var ipCmd = &cobra.Command{
 	Use:   "ip",
-	Short: "Get Target IP Address",
+	Short: "Get machine IP address",
 	Long: `Retrieves the IP address of the machine deployed on Hackthebox and displays it`,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetConfigValue("machineid")

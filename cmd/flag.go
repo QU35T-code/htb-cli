@@ -10,7 +10,7 @@ import (
 
 var flagCmd = &cobra.Command{
 	Use:   "flag",
-	Short: "A brief description of your command",
+	Short: "Submit a flag (user and root)",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		url := "https://www.hackthebox.com/api/v4/machine/own"

@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"htb/utils"
-	"encoding/json"
-	"io"
-	"log"
 )
 
 var stopCmd = &cobra.Command{
@@ -18,27 +15,17 @@ var stopCmd = &cobra.Command{
 		url := "https://www.hackthebox.com/api/v4/machine/stop"
 		var jsonData = []byte(`{"machine_id": ` + machine_id + `}`)
 		resp := utils.HtbPost(url, jsonData)
-		json_body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		var result map[string]interface{}
-		json.Unmarshal([]byte(json_body), &result)
+		message := utils.ParseJsonMessage(resp, "message")
 		fmt.Println("Active Machines")
-    	fmt.Println(result["message"])
+		fmt.Println(message)
 
 		// Retired
 		url = "https://www.hackthebox.com/api/v4/vm/terminate"
 		var jsonData2 = []byte(`{"machine_id": ` + machine_id + `}`)
 		resp = utils.HtbPost(url, jsonData2)
-		json_body, err = io.ReadAll(resp.Body)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		var result2 map[string]interface{}
-		json.Unmarshal([]byte(json_body), &result2)
+		message = utils.ParseJsonMessage(resp, "message")
 		fmt.Println("Retired Machines")
-    	fmt.Println(result2["message"])
+		fmt.Println(message)
 	},
 }
 

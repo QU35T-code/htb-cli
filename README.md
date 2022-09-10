@@ -37,6 +37,7 @@ token: eyJ...
 
 ## Blood
 
+By default the command shows the active machine.
 ```
 └─$ ./htb blood        
 Machine : Vessel
@@ -48,6 +49,18 @@ Time : 3H 23M 16S
 --- ROOT ---
 Name : irogir
 Time : 4H 20M 10S
+
+
+└─$ ./htb blood Opensource
+Machine : OpenSource
+
+--- USER ---
+Name : jazzpizazz
+Time : 0H 57M 3S
+
+--- ROOT ---
+Name : jazzpizazz
+Time : 1H 39M 17S
 ```
 
 ## Flag
@@ -62,6 +75,7 @@ SteamCloud user is now owned.
 
 ## Info
 
+By default the command shows the active machine.
 ```
 └─$ ./htb info
 
@@ -70,7 +84,15 @@ Name : Vessel
 OS : Linux
 Points : 40
 Difficulty : Hard
-Is Completed ? false 
+Is Completed ? false
+
+
+└─$ ./htb info Opensource
+--- INFO ---
+Name : OpenSource
+OS : Linux
+Points : 20
+Difficulty : EasyIs Completed ? true  
 ```
 
 ## IP

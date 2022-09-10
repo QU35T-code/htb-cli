@@ -55,7 +55,7 @@ func GetActiveMachineID() interface{} {
 		resp = HtbGet(url)
 		info = ParseJsonMessage(resp, "info")
 		if (info == nil) {
-			fmt.Println("No machine is active")
+			fmt.Println("No machine is running")
 			os.Exit(1)
 		}
 		return info.(map[string]interface{})["id"]

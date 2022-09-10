@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"htb/utils"
-	"encoding/json"
-	"io"
-	"log"
 )
 
 var resetCmd = &cobra.Command{
@@ -18,13 +15,8 @@ var resetCmd = &cobra.Command{
 		machine_id := utils.GetConfigValue("machineid")
 		var jsonData = []byte(`{"machine_id": ` + machine_id + `}`)
 		resp := utils.HtbPost(url, jsonData)
-		json_body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		var result map[string]interface{}
-		json.Unmarshal([]byte(json_body), &result)
-    	fmt.Println(result["message"])
+		message := utils.ParseJsonMessage(resp, "message")
+		fmt.Println(message)
 	},
 }
 

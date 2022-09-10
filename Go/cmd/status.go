@@ -4,9 +4,6 @@ import (
 	"fmt"
 	"github.com/spf13/cobra"
 	"htb/utils"
-	"io"
-	"log"
-	"encoding/json"
 	"os"
 )
 
@@ -17,13 +14,7 @@ var statusCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {		
 		url := "https://www.hackthebox.com/api/v4/machine/active"
 		resp := utils.HtbGet(url)
-		json_body, err := io.ReadAll(resp.Body)
-		if err != nil {
-			log.Fatalln(err)
-		}
-		var result map[string]interface{}
-		json.Unmarshal([]byte(json_body), &result)
-		info := result["info"]
+		info := utils.ParseJsonMessage(resp, "info")
 		if (info == nil) {
 			fmt.Println("No machine is active")
 			os.Exit(1)

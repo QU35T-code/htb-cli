@@ -10,7 +10,14 @@ var bloodCmd = &cobra.Command{
 	Use:   "blood",
 	Short: "Displays users who have blood the machine",
 	Run: func(cmd *cobra.Command, args []string) {
-		machine_id := utils.GetConfigValue("machineid")
+		machine_id := ""
+		if len(args) != 0 {
+			machine_id = utils.SearchMachineIDByName(args[0])
+			machine_id = fmt.Sprintf("%v", machine_id)
+		} else {
+			machine_id_interface := utils.GetActiveMachineID()
+			machine_id = fmt.Sprintf("%v", machine_id_interface)
+		}
 		url := "https://www.hackthebox.com/api/v4/machine/profile/" + machine_id
 		resp := utils.HtbGet(url)
 		info := utils.ParseJsonMessage(resp, "info").(map[string]interface{})

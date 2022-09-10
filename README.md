@@ -49,3 +49,26 @@ Time : 3H 23M 16S
 Name : irogir
 Time : 4H 20M 10S
 ```
+
+## Flag
+
+```
+└─$ ./htb flag flag4testing 3
+
+Machine : SteamCloud
+
+SteamCloud user is now owned.
+```
+
+## Info
+
+```
+└─$ ./htb info
+
+--- INFO ---
+Name : Vessel
+OS : Linux
+Points : 40
+Difficulty : Hard
+Is Completed ? false 
+```

@@ -9,7 +9,6 @@ import (
 var infoCmd = &cobra.Command{
 	Use:   "info",
 	Short: "Displays machine information",
-	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetActiveMachineID()
 		machine_id = fmt.Sprintf("%v", machine_id)

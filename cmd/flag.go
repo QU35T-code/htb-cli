@@ -12,7 +12,6 @@ import (
 var flagCmd = &cobra.Command{
 	Use:   "flag",
 	Short: "Submit a flag (user and root)",
-	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		flag := args[0]
 		difficulty, err := strconv.Atoi(args[1])

@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"fmt"
+	"os"
 )
 
 func SearchMachineIDByName(machine_name string) string {
@@ -53,9 +54,21 @@ func GetActiveMachineID() interface{} {
 		url = "https://www.hackthebox.com/api/v4/release_arena/active"
 		resp = HtbGet(url)
 		info = ParseJsonMessage(resp, "info")
+		if (info == nil) {
+			fmt.Println("No machine is active")
+			os.Exit(1)
+		}
 		return info.(map[string]interface{})["id"]
 	} else {
 		return info.(map[string]interface{})["id"]
 	}
 	return ""
+}
+
+func GetActiveMachineName(machine_id interface{}) interface{} {
+	machine_id = fmt.Sprintf("%v", machine_id)
+	url := "https://www.hackthebox.com/api/v4/machine/profile/" + machine_id.(string)
+	resp := HtbGet(url)
+	info := ParseJsonMessage(resp, "info").(map[string]interface{})
+	return info["name"]
 }

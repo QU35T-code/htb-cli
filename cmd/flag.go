@@ -6,6 +6,7 @@ import (
 	"htb/utils"
 	"log"
 	"strconv"
+	"os"
 )
 
 var flagCmd = &cobra.Command{
@@ -13,18 +14,24 @@ var flagCmd = &cobra.Command{
 	Short: "Submit a flag (user and root)",
 	Long: ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		url := "https://www.hackthebox.com/api/v4/machine/own"
-		machine_id := utils.GetConfigValue("machineid")
 		flag := args[0]
 		difficulty, err := strconv.Atoi(args[1])
 		if err != nil {
 			log.Println(err)
 		}
-		difficulty2 := strconv.Itoa(difficulty * 10)
-		var jsonData = []byte(`{"flag": "` + flag + `", "id": ` + machine_id + `, "difficulty": ` + difficulty2 + `}`)
+		if difficulty < 1 || difficulty > 10 {
+			fmt.Println("The difficulty must be in 1 and 10")
+			os.Exit(1)
+		}
+		machine_id := utils.GetActiveMachineID()
+		machine_name := utils.GetActiveMachineName(machine_id)
+		machine_id = fmt.Sprintf("%v", machine_id)
+		url := "https://www.hackthebox.com/api/v4/machine/own"
+		difficultyString := strconv.Itoa(difficulty * 10)
+		var jsonData = []byte(`{"flag": "` + flag + `", "id": ` + machine_id.(string) + `, "difficulty": ` + difficultyString + `}`)
 		resp := utils.HtbPost(url, jsonData)
 		message := utils.ParseJsonMessage(resp, "message")
-		fmt.Println(message)
+		fmt.Printf("Machine : %v\n\n%v", machine_name, message)
 	},
 }
 

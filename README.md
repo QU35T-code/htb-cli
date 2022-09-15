@@ -35,6 +35,13 @@ API Token can be find here : https://app.hackthebox.com/profile/settings => Crea
 token: eyJ...
 ```
 
+## Config
+This step is important and allows you to identify the target machine for other commands.
+```
+└─$ ./htb config Active
+The machine is correctly configured
+```
+
 ## Blood
 
 By default the command shows the active machine.

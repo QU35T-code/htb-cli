@@ -15,7 +15,6 @@ Available Commands:
   start       Start a machine
   status      Displays the active machine
   stop        Stop the current machine
-  www         Starts an HTTP (WIP) server
 
 Flags:
   -h, --help   help for htb
@@ -25,11 +24,12 @@ Use "htb [command] --help" for more information about a command.
 
 ## Installation
 
-`git clone https://github.com/QU35T-code/HTB-manager.git`
+`go install https://github.com/QU35T-code/HTB-pentest`
 
 ## Configuration
 
 Add `config.yml` file at root project with this sample :
+API Token can be find here : https://app.hackthebox.com/profile/settings => Create App Token
 
 ```
 token: eyJ...
@@ -102,4 +102,18 @@ Difficulty : EasyIs Completed ? true
 Machine : Vessel
 
 10.10.11.178  
+```
+
+## Start
+
+```
+└─$ ./htb start
+Retired : Machine deployed to lab.
+```
+
+## Stop
+
+```
+└─$ ./htb stop
+Retired : Machine terminated.
 ```

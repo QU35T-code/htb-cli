@@ -1,15 +1,16 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
-	"htb/utils"
 	"fmt"
+	"htb-cli/utils"
+
+	"github.com/spf13/cobra"
 )
 
 var stopCmd = &cobra.Command{
 	Use:   "stop",
 	Short: "Stop the current machine",
-	Long: "Stop the current machine",
+	Long:  "Stop the current machine",
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetActiveMachineID()
 		machine_type := utils.GetMachineType(machine_id)
@@ -35,7 +36,7 @@ var stopCmd = &cobra.Command{
 			message := utils.ParseJsonMessage(resp, "message")
 			fmt.Print("Release : ")
 			fmt.Println(message)
-		}		
+		}
 	},
 }
 

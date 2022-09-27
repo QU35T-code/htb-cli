@@ -2,13 +2,14 @@ package cmd
 
 import (
 	"os"
+
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "htb",
+	Use:   "htb-cli",
 	Short: "Shortcuts that facilitate Hackthebox",
-	Long: `This is a program developed in Go to facilitate and automate certain tasks for the Hackthebox platform.`,
+	Long:  `This is a program developed in Go to facilitate and automate certain tasks for the Hackthebox platform.`,
 }
 
 func Execute() {
@@ -21,5 +22,3 @@ func Execute() {
 
 func init() {
 }
-
-

@@ -28,6 +28,7 @@ Use "htb [command] --help" for more information about a command.
 
 ## Configuration
 
+Env var => HTB_TOKEN
 Add `config.yml` file at root project with this sample :
 API Token can be find here : https://app.hackthebox.com/profile/settings => Create App Token
 

@@ -2,14 +2,15 @@ package cmd
 
 import (
 	"fmt"
+	"htb-cli/utils"
+
 	"github.com/spf13/cobra"
-	"htb/utils"
 )
 
 var resetCmd = &cobra.Command{
 	Use:   "reset",
 	Short: "Reset a machine",
-	Long: "Reset a machine",
+	Long:  "Reset a machine",
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetConfigValue("machineid")
 		machine_type := utils.GetMachineType(machine_id)
@@ -29,7 +30,6 @@ var resetCmd = &cobra.Command{
 			fmt.Println(message)
 		}
 
-		
 	},
 }
 

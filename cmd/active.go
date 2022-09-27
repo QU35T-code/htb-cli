@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"htb-cli/utils"
+
 	"github.com/spf13/cobra"
-	"htb/utils"
 )
 
 var activeCmd = &cobra.Command{

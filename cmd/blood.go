@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"fmt"
+	"htb-cli/utils"
+
 	"github.com/spf13/cobra"
-	"htb/utils"
 )
 
 var bloodCmd = &cobra.Command{
@@ -22,18 +23,18 @@ var bloodCmd = &cobra.Command{
 		resp := utils.HtbGet(url)
 		info := utils.ParseJsonMessage(resp, "info").(map[string]interface{})
 		fmt.Printf("Machine : %v\n\n", info["name"])
-		if (info["userBlood"] != nil) {
+		if info["userBlood"] != nil {
 			infoUserBlood := info["userBlood"].(map[string]interface{})["user"].(map[string]interface{})
 			fmt.Printf("--- USER ---\nName : %v\nTime : %v\n\n", infoUserBlood["name"], info["firstUserBloodTime"])
-		} else if (info["user_owns_count"].(float64) != 0 && info["userBlood"] == nil) {
+		} else if info["user_owns_count"].(float64) != 0 && info["userBlood"] == nil {
 			fmt.Println("There was user blood but the API has not yet retrieved the information...")
 		} else {
 			fmt.Println("There is no first blood for the user")
 		}
-		if (info["rootBlood"] != nil) {
+		if info["rootBlood"] != nil {
 			infoRootBlood := info["rootBlood"].(map[string]interface{})["user"].(map[string]interface{})
 			fmt.Printf("--- ROOT ---\nName : %v\nTime : %v", infoRootBlood["name"], info["firstRootBloodTime"])
-		} else if (info["root_owns_count"].(float64) != 0 && info["rootBlood"] == nil) {
+		} else if info["root_owns_count"].(float64) != 0 && info["rootBlood"] == nil {
 			fmt.Println("There was root blood but the API has not yet retrieved the information...")
 		} else {
 			fmt.Println("There is no first blood for the root")

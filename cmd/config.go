@@ -1,9 +1,10 @@
 package cmd
 
 import (
-	"github.com/spf13/cobra"
-	"htb/utils"
 	"fmt"
+	"htb-cli/utils"
+
+	"github.com/spf13/cobra"
 )
 
 var configCmd = &cobra.Command{

@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"htb-cli/utils"
 	"os"
 
+	"github.com/QU35T-code/htb-cli/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -25,26 +25,10 @@ var statusCmd = &cobra.Command{
 				os.Exit(1)
 			}
 			infomap := info.(map[string]interface{})
-			fmt.Print("ID : ")
-			fmt.Println(infomap["id"])
-			fmt.Print("Name : ")
-			fmt.Println(infomap["name"])
-			fmt.Print("Plan : ")
-			fmt.Println(infomap["type"])
-			fmt.Print("Server : ")
-			fmt.Println(infomap["lab_server"])
-			fmt.Print("Status : Running")
+			fmt.Printf("--- STATUS ---\nId : %v\nName : %v\nPlan : %v\nServer : %v\nStatus %v", infomap["id"], infomap["name"], infomap["type"], infomap["lab_server"], "Running")
 		}
 		infomap := info.(map[string]interface{})
-		fmt.Print("ID : ")
-		fmt.Println(infomap["id"])
-		fmt.Print("Name : ")
-		fmt.Println(infomap["name"])
-		fmt.Print("Plan : ")
-		fmt.Println(infomap["type"])
-		fmt.Print("Server : ")
-		fmt.Println(infomap["lab_server"])
-		fmt.Println("Status : Running")
+		fmt.Printf("--- STATUS ---\nId : %v\nName : %v\nPlan : %v\nServer : %v\nStatus %v", infomap["id"], infomap["name"], infomap["type"], infomap["lab_server"], "Running")
 	},
 }
 

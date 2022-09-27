@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"htb-cli/utils"
+	"os"
 
+	"github.com/QU35T-code/htb-cli/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -12,7 +13,7 @@ var startCmd = &cobra.Command{
 	Short: "Start a machine",
 	Long:  `Starts a Hackthebox machine specified in argument`,
 	Run: func(cmd *cobra.Command, args []string) {
-		machine_id := utils.GetConfigValue("machineid")
+		machine_id := os.Getenv("HTB_MACHINE_ID")
 		machine_type := utils.GetMachineType(machine_id)
 		if machine_type == "active" {
 			url := "https://www.hackthebox.com/api/v4/machine/play/" + machine_id

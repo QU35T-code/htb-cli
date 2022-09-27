@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"htb-cli/utils"
 
+	"github.com/QU35T-code/htb-cli/utils"
 	"github.com/spf13/cobra"
 )
 

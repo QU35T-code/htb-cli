@@ -2,8 +2,19 @@ package utils
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/spf13/viper"
 )
+
+func GetHTBToken() string {
+	var envName = "HTB_TOKEN"
+	if os.Getenv(envName) == "" {
+		fmt.Printf("Environment variable is not set : %v", envName)
+		os.Exit(84)
+	}
+	return os.Getenv("HTB_TOKEN")
+}
 
 func GetConfigValue(key string) string {
 	viper.SetConfigName("config.yml")

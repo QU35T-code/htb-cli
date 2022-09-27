@@ -1,4 +1,4 @@
-module htb
+module htb-cli
 
 go 1.18
 

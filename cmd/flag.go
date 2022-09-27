@@ -2,11 +2,12 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
-	"htb/utils"
+	"htb-cli/utils"
 	"log"
-	"strconv"
 	"os"
+	"strconv"
+
+	"github.com/spf13/cobra"
 )
 
 var flagCmd = &cobra.Command{

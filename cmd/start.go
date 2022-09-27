@@ -2,14 +2,15 @@ package cmd
 
 import (
 	"fmt"
+	"htb-cli/utils"
+
 	"github.com/spf13/cobra"
-	"htb/utils"
 )
 
 var startCmd = &cobra.Command{
 	Use:   "start",
 	Short: "Start a machine",
-	Long: `Starts a Hackthebox machine specified in argument`,
+	Long:  `Starts a Hackthebox machine specified in argument`,
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetConfigValue("machineid")
 		machine_type := utils.GetMachineType(machine_id)
@@ -34,7 +35,7 @@ var startCmd = &cobra.Command{
 			message := utils.ParseJsonMessage(resp, "message")
 			fmt.Print("Release : ")
 			fmt.Println(message)
-		}		
+		}
 	},
 }
 

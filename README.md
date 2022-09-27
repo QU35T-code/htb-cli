@@ -25,11 +25,11 @@ Use "htb-cli [command] --help" for more information about a command.
 
 ## Installation
 
-`go install github.com/QU35T-code/htb-cli`
+`go install github.com/QU35T-code/htb-cli@latest`
 
 ## Configuration
 
-Env var => HTB_TOKEN
+You must add a Hackthebox **App token** in the **HTB_TOKEN** environment variable (zshrc maybe).
 API Token can be find here : https://app.hackthebox.com/profile/settings => Create App Token
 
 ```
@@ -73,6 +73,8 @@ Time : 1H 39M 17S
 
 ## Flag
 
+This command allows to submit the user flag and the root flag of active and retired machines. The first argument is the flag and the second the difficulty /10.
+
 ```
 └─$ ./htb flag flag4testing 3
 
@@ -84,6 +86,7 @@ SteamCloud user is now owned.
 ## Info
 
 By default the command shows the active machine.
+
 ```
 └─$ ./htb info
 

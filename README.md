@@ -2,9 +2,10 @@
 This is a program developed in Go to facilitate and automate certain tasks for the Hackthebox platform.
 
 Usage:
-  htb [command]
+  htb-cli [command]
 
 Available Commands:
+  active      List of active machines
   blood       Displays users who have blood the machine
   config      Save the machine chosen as an argument
   flag        Submit a flag (user and root)
@@ -17,23 +18,22 @@ Available Commands:
   stop        Stop the current machine
 
 Flags:
-  -h, --help   help for htb
+  -h, --help   help for htb-cli
 
-Use "htb [command] --help" for more information about a command.
+Use "htb-cli [command] --help" for more information about a command.
 ```
 
 ## Installation
 
-`go install https://github.com/QU35T-code/HTB-pentest`
+`go install github.com/QU35T-code/htb-cli`
 
 ## Configuration
 
 Env var => HTB_TOKEN
-Add `config.yml` file at root project with this sample :
 API Token can be find here : https://app.hackthebox.com/profile/settings => Create App Token
 
 ```
-token: eyJ...
+export HTB_TOKEN=eyJ...
 ```
 
 ## Config

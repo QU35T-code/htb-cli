@@ -61,8 +61,6 @@ func GetUserSubscription() string {
 	info := ParseJsonMessage(resp, "info").(map[string]interface{})
 	if info["canAccessVIP"].(bool) {
 		return "vip"
-	} else if info["canAccessDedilab"].(bool) {
-		return "vip+"
 	}
 	return "free"
 }

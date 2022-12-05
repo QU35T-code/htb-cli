@@ -34,14 +34,6 @@ var startCmd = &cobra.Command{
 			message := utils.ParseJsonMessage(resp, "message")
 			fmt.Println(message)
 			return
-		} else if user_subscription == "vip+" {
-			fmt.Println("VIP+ test :")
-			url := "https://www.hackthebox.com/api/v4/vm/spawn"
-			var jsonData2 = []byte(`{"machine_id": ` + machine_id + `}`)
-			resp := utils.HtbPost(url, jsonData2)
-			message := utils.ParseJsonMessage(resp, "message")
-			fmt.Println(message)
-			return
 		} else {
 			url := "https://www.hackthebox.com/api/v4/machine/play/" + machine_id
 			var jsonData = []byte("{}")

@@ -13,6 +13,7 @@ var stopCmd = &cobra.Command{
 	Long:  "Stop the current machine",
 	Run: func(cmd *cobra.Command, args []string) {
 		machine_id := utils.GetActiveMachineID()
+		machine_id_string := fmt.Sprintf("%v", machine_id)
 		machine_type := utils.GetMachineType(machine_id)
 		user_subscription := utils.GetUserSubscription()
 
@@ -27,14 +28,14 @@ var stopCmd = &cobra.Command{
 
 		if user_subscription == "vip" {
 			url := "https://www.hackthebox.com/api/v4/vm/terminate"
-			var jsonData2 = []byte(`{"machine_id": ` + machine_id.(string) + `}`)
+			var jsonData2 = []byte(`{"machine_id": ` + machine_id_string + `}`)
 			resp := utils.HtbPost(url, jsonData2)
 			message := utils.ParseJsonMessage(resp, "message")
 			fmt.Println(message)
 			return
 		} else {
 			url := "https://www.hackthebox.com/api/v4/machine/stop"
-			var jsonData = []byte(`{"machine_id": ` + machine_id.(string) + `}`)
+			var jsonData = []byte(`{"machine_id": ` + machine_id_string + `}`)
 			resp := utils.HtbPost(url, jsonData)
 			message := utils.ParseJsonMessage(resp, "message")
 			fmt.Println(message)

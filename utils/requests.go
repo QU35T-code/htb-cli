@@ -14,6 +14,7 @@ func HtbGet(url string) *http.Response {
 		fmt.Println(err)
 	}
 	req.Header.Set("User-Agent", "HTB-Tool")
+	req.Header.Set("Host", "www.hackthebox.com")
 	req.Header.Set("Authorization", "Bearer "+jwt_token)
 	client := &http.Client{}
 	resp, err := client.Do(req)

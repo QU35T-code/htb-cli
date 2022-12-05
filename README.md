@@ -36,11 +36,25 @@ API Token can be find here : https://app.hackthebox.com/profile/settings => Crea
 export HTB_TOKEN=eyJ...
 ```
 
-## Config
-This step is important and allows you to identify the target machine for other commands.
+## Start
+
 ```
-└─$ ./htb config Active
-The machine is correctly configured
+└─$ ./htb start Flight
+Machine deployed to lab.
+```
+
+## Stop
+
+```
+└─$ ./htb stop
+Machine terminated.
+```
+
+## Reset
+
+```
+└─$ ./htb reset
+Machine terminated.
 ```
 
 ## Blood
@@ -113,18 +127,4 @@ Difficulty : EasyIs Completed ? true
 Machine : Vessel
 
 10.10.11.178  
-```
-
-## Start
-
-```
-└─$ ./htb start
-Retired : Machine deployed to lab.
-```
-
-## Stop
-
-```
-└─$ ./htb stop
-Retired : Machine terminated.
 ```

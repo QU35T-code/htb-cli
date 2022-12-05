@@ -26,6 +26,7 @@ var statusCmd = &cobra.Command{
 			}
 			infomap := info.(map[string]interface{})
 			fmt.Printf("--- STATUS ---\nId : %v\nName : %v\nPlan : %v\nServer : %v\nStatus %v", infomap["id"], infomap["name"], infomap["type"], infomap["lab_server"], "Running")
+			os.Exit(0)
 		}
 		infomap := info.(map[string]interface{})
 		fmt.Printf("--- STATUS ---\nId : %v\nName : %v\nPlan : %v\nServer : %v\nStatus %v", infomap["id"], infomap["name"], infomap["type"], infomap["lab_server"], "Running")

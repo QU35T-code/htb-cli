@@ -14,6 +14,10 @@ var flagCmd = &cobra.Command{
 	Use:   "flag",
 	Short: "Submit a flag (user and root)",
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) != 2 {
+			fmt.Println("USAGE : htb-cli flag FLAG DIFFICULTY(1:10)")
+			return
+		}
 		flag := args[0]
 		difficulty, err := strconv.Atoi(args[1])
 		if err != nil {

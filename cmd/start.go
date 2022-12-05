@@ -13,7 +13,7 @@ var startCmd = &cobra.Command{
 	Long:  `Starts a Hackthebox machine specified in argument`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) < 1 {
-			fmt.Println("USAGE : ./htb-cli start MACHINE_NAME")
+			fmt.Println("USAGE : htb-cli start MACHINE_NAME")
 			return
 		}
 		machine_id := utils.SearchMachineIDByName(args[0])
